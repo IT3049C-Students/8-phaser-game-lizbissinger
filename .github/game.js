@@ -16,14 +16,16 @@ window.onload = function() {
      play.prototype = {
 		preload:function(){
 			game.load.image("bird", "bird.png"); 
-			game.load.image("pipe", "pipe.png");	
+			game.load.image("pipe", "pipe.png");
+			game.load.audio("music", ["music.mp3"]);	
 		},
 		create:function(){
+			music = this.sound.add("music", {loop: true});
 			pipeGroup = game.add.group();
 			score = 0;
 			topScore = localStorage.getItem("topFlappyScore")==null?0:localStorage.getItem("topFlappyScore");
 			scoreText = game.add.text(10,10,"-",{
-				font:"bold 16px Arial"
+				font:"bold 16px Arial",
 			});
 			updateScore();
 			game.stage.backgroundColor = "#87CEEB";
